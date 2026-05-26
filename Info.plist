@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>CFBundleName</key>
+        <string>dose</string>
+
+        <key>CFBundleDisplayName</key>
+        <string>dose</string>
+
+        <key>CFBundleIdentifier</key>
+        <string>com.leoborai.dose</string>
+
+        <key>CFBundleVersion</key>
+        <string>0.1.0</string>
+
+        <key>CFBundleExecutable</key>
+        <string>dose</string>
+
+        <key>CFBundlePackageType</key>
+        <string>APPL</string>
+
+        <key>LSUIElement</key>
+        <true/>
+
+        <!--
+        <key>CFBundleIconFile</key>
+        <string>dose.icns</string>
+        -->
+    </dict>
+</plist>

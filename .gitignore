@@ -1,5 +1,4 @@
-.env
-/target
-/examples/target
-Cargo.lock
+.build
 .DS_Store
+.env
+dist
