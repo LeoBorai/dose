@@ -1,0 +1,43 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-release:
+    name: Build & Release
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build dose.app
+        run: |
+          chmod +x Scripts/build.sh
+          bash Scripts/build.sh
+
+      - name: Generate release tag
+        id: tag
+        run: |
+          DATE=$(date -u +"%Y-%m-%d")
+          SHORT_HASH=$(git rev-parse --short HEAD)
+          echo "value=${DATE}-${SHORT_HASH}" >> "$GITHUB_OUTPUT"
+
+      - name: Compress artifact
+        run: |
+          zip -r dose.app.zip dose.app
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.value }}
+          name: ${{ steps.tag.outputs.value }}
+          files: dose.app.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
