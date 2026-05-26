@@ -30,7 +30,7 @@ jobs:
 
       - name: Compress artifact
         run: |
-          zip -r dose.app.zip dose.app
+          zip -r dose.app.zip ./dist/dose.app
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
