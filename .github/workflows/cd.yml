@@ -31,6 +31,7 @@ jobs:
           mkdir -p dist/dose.app/Contents/Resources
           mv .build/release/dose dist/dose.app/Contents/MacOS/dose
           cp ./Info.plist dist/dose.app/Contents/Info.plist
+          codesign --force --deep --sign - dist/dose.app
 
       - name: Generate release tag
         id: tag
